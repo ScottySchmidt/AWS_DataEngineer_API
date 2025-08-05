@@ -7,7 +7,7 @@ Each part of the project is documented separately:
 - [Part 3: Data Transformation]
 - [Part 4: Orchestration]
 
-# API Request into S3 database
+# Part 1 - API Request into S3 database
 **Republish BLS Productivity Data into Amazon S3**
 
 ---
