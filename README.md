@@ -3,10 +3,10 @@
 This repo contains my solution to the Rearc Data Engineering Challenge.  
 Each part of the project is documented separately:
 
-- [Part 1: S3 Sync](./part1/README.md)
-- [Part 2: AWS Glue Catalog](./part2/README.md)
-- [Part 3: Data Transformation](./part3/README.md)
-- [Part 4: Orchestration](./part4/README.md)
+- [Part 1: API Request into S3 database]
+- [Part 2: AWS Glue Catalog]
+- [Part 3: Data Transformation]
+- [Part 4: Orchestration]
 
 # Data Quest: Part 1 - AWS S3
 **Republish BLS Productivity Data into Amazon S3**
