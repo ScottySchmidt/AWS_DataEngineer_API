@@ -1,3 +1,5 @@
+# Version 1 Method was very tough using a User Agent.
+# Solved issue by doing version2 with an API key.
 import os
 import requests
 import boto3
