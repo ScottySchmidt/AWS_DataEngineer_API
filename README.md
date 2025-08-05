@@ -4,8 +4,7 @@
 ---
 
 ## 📌 Overview
-Part 1 of the Rearc Data Quest focuses on sourcing the **Bureau of Labor Statistics (BLS) Productivity dataset** and publishing it to an **AWS S3 bucket**. 
-The process ensures the data is programmatically accessible and kept in sync with the official BLS source.
+Part 1 focuses on sourcing the **Bureau of Labor Statistics (BLS) Productivity dataset** and publishing it to an **AWS S3 bucket**. The process ensures the data is programmatically accessible and kept in sync with the official BLS source.
 
 ---
 
@@ -24,8 +23,7 @@ When first attempting to fetch data from the [BLS site](https://www.bls.gov/), I
 
 ---
 
-##### Attempt 1: Custom User-Agent (Glitched)
-
+##### Attempt 1: Custom User-Agent - Hard Way
 I initially tried setting a `User-Agent` header manually like this:
 
 ```python
