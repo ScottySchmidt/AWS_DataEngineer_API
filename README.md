@@ -1,4 +1,4 @@
-# AWS Data Engineering Quest: 4-Part Pipeline
+# AWS Data Engineering API Quest: Four-Part Pipeline
 
 This repo contains my solution to the Rearc Data Engineering Challenge.  
 Each part of the project is documented separately:
