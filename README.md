@@ -32,6 +32,28 @@ headers = {
 }
 
 
+## 🔑 BLS API Key Registration
+
+I registered for a free BLS Public API key at [bls.gov](https://data.bls.gov/registrationEngine/) and received it by email.
+
+Tested with Python:
+
+```python
+import requests, json
+
+API_KEY = "YOUR_BLS_API_KEY"
+payload = json.dumps({
+    "registrationKey": API_KEY,
+    "seriesid": ["PRS85006092"],
+    "startyear": "2023",
+    "endyear": "2024"
+})
+headers = {"Content-type": "application/json"}
+r = requests.post("https://api.bls.gov/publicAPI/v2/timeseries/data/", data=payload, headers=headers)
+
+print(r.json()["status"])  # Expected: REQUEST_SUCCEEDED
+
+
 ## 🔐 Using `config.json` to Store Credentials
 
 Instead of hardcoding my S3 bucket name and AWS profile directly in the script,  
