@@ -15,3 +15,20 @@ The process ensures the data is programmatically accessible and kept in sync wit
 Set up an AWS profile named `rearc-quest`:
 ```bash
 aws configure --profile rearc-quest
+
+
+
+###  Troubleshooting: 403 Errors & Glitchy User-Agent Header
+
+When first attempting to fetch data from the [BLS site](https://www.bls.gov/), I ran into **403 Forbidden errors**. Based on BLS’s API access policy, requests must include a `User-Agent` header with valid contact info, or else automated traffic may be blocked.
+
+---
+
+##### Attempt 1: Custom User-Agent (Glitched)
+
+I initially tried setting a `User-Agent` header manually like this:
+
+```python
+headers = {
+    "User-Agent": "Mozilla/5.0 (compatible; ScottBot/1.0; +scott@email.com)"
+}
