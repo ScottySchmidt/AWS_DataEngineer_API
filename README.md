@@ -34,18 +34,13 @@ headers = {
 
 ## 🔐 Using `config.json` to Store Credentials
 
-To keep sensitive information (like my AWS bucket name and profile) **out of the codebase**,  
-I created a `config.json` file. This allows the Python script to read values dynamically without hardcoding them.
+Instead of hardcoding my S3 bucket name and AWS profile directly in the script,  
+I created a `config.json` file to keep sensitive info out of the codebase.
 
----
+### Step 1: Create `config.json`
 
-### 📂 Security Addition: Create `config.json`
-
-In the project root, I created a file called `config.json`:
-This helps hide confidential information:
 ```json
 {
-  "bucket_name": "*****-scott-2025",
-  "aws_profile": "*****-quest"
+  "bucket_name": "rearc-bls-scott-2025",
+  "aws_profile": "rearc-quest"
 }
-
