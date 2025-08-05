@@ -30,3 +30,22 @@ I initially tried setting a `User-Agent` header manually like this:
 headers = {
     "User-Agent": "Mozilla/5.0 (compatible; ScottBot/1.0; +scott@email.com)"
 }
+
+
+## 🔐 Using `config.json` to Store Credentials
+
+To keep sensitive information (like my AWS bucket name and profile) **out of the codebase**,  
+I created a `config.json` file. This allows the Python script to read values dynamically without hardcoding them.
+
+---
+
+### 📂 Security Addition: Create `config.json`
+
+In the project root, I created a file called `config.json`:
+This helps hide confidential information:
+```json
+{
+  "bucket_name": "*****-scott-2025",
+  "aws_profile": "*****-quest"
+}
+
