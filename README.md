@@ -55,12 +55,9 @@ I created a `config.json` file to keep sensitive info out of the codebase.
 
 ```json
 {
-  "bucket_name": "rearc-bls-scott-2025",
-  "aws_profile": "rearc-quest"
+  "bucket_name": *********,
+  "aws_profile": ********"
 }
 ```
 
-# Part 2 - API Request into Athena 
-https://honolulu-api.datausa.io/tesseract/data.jsonrecords?cube=acs_yg_total_population_1&drilldowns=Year%2CNation&locale=en&measures=Population
-
-Each Athena query on my Honolulu dataset costs about $0.00005 — that’s 20,000 queries for just a dollar. For small JSON datasets, Athena is essentially free while letting us avoid the overhead of running a database cluster.
+# Part 2 - API Request using AWS Lambda → S3
