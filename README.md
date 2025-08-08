@@ -9,8 +9,7 @@ This repository contains a multi-part AWS data engineering pipeline that ingests
 
 2. **API Request via AWS Lambda → S3** *(implemented on AWS)*
 This step automates pulling BLS data via their API and dropping the JSON into S3 on demand (or on a schedule). It’s the ingestion bridge between Part 1 (static BLS files) and Part 3 (query/analysis).
-
-**Stage 2 Code:** [lambda_bls_api_part2.py](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda_bls_api_part2.py) 
+[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda_bls_api_part2.py)
 **Output:** `s3://<your-bucket>/bls_data.json` (or a timestamped variant)
 
 
