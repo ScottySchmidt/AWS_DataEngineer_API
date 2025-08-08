@@ -1,7 +1,6 @@
-# AWS Data Engineering – BLS API Pipeline
-This repository contains a multi-part AWS data engineering pipeline that ingests, processes, and stores data from the U.S. BLS and other sources.
+# Four-Part AWS Data Engineering Pipeline
+This repository contains a complete four-stage pipeline demonstrating AWS-based data ingestion, storage, querying, and infrastructure automation. It showcases how to **deploy API-driven pipelines with GitHub CI/CD** using AWS services like **S3, Glue, RDS, IAM, Athena, and Lambda**. The project replicates real-world data engineering workflows from raw data ingestion to automated deployments — all built for scalability, maintainability, and automation.
 
-### Four-Part AWS Data Engineering Pipeline
 1. **BLS Data to S3**  
    Fetches BLS productivity and inflation data using both the BLS Public API and direct file downloads with a custom `User-Agent`.  
    Compares file hashes to avoid re-uploading unchanged files, and stores results in Amazon S3.  
