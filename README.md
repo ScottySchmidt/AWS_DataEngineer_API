@@ -1,5 +1,5 @@
 # AWS Data Engineering – BLS API Pipeline
-This repository contains a multi-part AWS data engineering pipeline that ingests, processes, and stores data from the U.S. Bureau of Labor Statistics (BLS) and other sources.
+This repository contains a multi-part AWS data engineering pipeline that ingests, processes, and stores data from the U.S. BLS and other sources.
 
 ### Four-Part AWS Data Engineering Pipeline
 1. **BLS Data to S3**  
@@ -10,6 +10,7 @@ This repository contains a multi-part AWS data engineering pipeline that ingests
 2. **API Request via AWS Lambda → S3**
 
    This step automates pulling BLS data via their API and dropping the JSON into S3 on demand (or on a schedule). It’s the    ingestion bridge between Part 1 (static BLS files) and Part 3 (query/analysis).
+   
    [View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda_bls_api_part2.py)
    
    **Output:** `s3://<your-bucket>/bls_data.json` (or a timestamped variant)
