@@ -7,7 +7,7 @@ This repository contains a multi-part AWS data engineering pipeline that ingests
    Compares file hashes to avoid re-uploading unchanged files, and stores results in Amazon S3.  
    [View Notebook](s3-pipeline-bls-api-part1.ipynb)
 
-2. **API Request via AWS Lambda → S3** *(implemented on AWS)*
+2. **API Request via AWS Lambda → S3**
    This step automates pulling BLS data via their API and dropping the JSON into S3 on demand (or on a schedule). It’s the    ingestion bridge between Part 1 (static BLS files) and Part 3 (query/analysis).
    
    [View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda_bls_api_part2.py)
