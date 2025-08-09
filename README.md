@@ -20,6 +20,7 @@ This repository contains a complete four-stage pipeline demonstrating AWS-based 
    [View Notebook](aws-data-pipeline-warehouse-part3.ipynb)
 
 4. **Automated Data Pipeline (Infrastructure as Code)**
+   
    This stage packages the entire pipeline into a repeatable, deployable AWS infrastructure setup.  
    We’re using the AWS Cloud Development Kit (CDK) to define resources in Python and deploy them via CloudFormation.
 
