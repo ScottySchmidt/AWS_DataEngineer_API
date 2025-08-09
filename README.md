@@ -14,11 +14,12 @@ This repository contains a complete four-stage pipeline demonstrating AWS-based 
    
    **Output:** `s3://<your-bucket>/bls_data.json` (or a timestamped variant)
 
-4. **Data Processing and Analysis**  
-   Loads the stored data from S3 into Pandas for cleaning, transformation, and analytical reporting.  
+3. **Data Processing and Analysis**  
+   Loads stored data from S3 into Pandas within AWS Lambda for cleaning, joining datasets, transforming columns, and generating analytical reports.
+   In parallel, development is underway to enable querying and analysis directly in Amazon Athena for scalable, serverless analytics.  
    [View Notebook](aws-data-pipeline-warehouse-part3.ipynb)
 
-5. **Automated Data Pipeline (Infrastructure as Code)**
+4. **Automated Data Pipeline (Infrastructure as Code)**
    This stage packages the entire pipeline into a repeatable, deployable AWS infrastructure setup.  
    We’re using the AWS Cloud Development Kit (CDK) to define resources in Python and deploy them via CloudFormation.
 
