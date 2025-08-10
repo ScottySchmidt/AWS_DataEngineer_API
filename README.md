@@ -1,35 +1,41 @@
 # Four-Part AWS Data Engineering Pipeline
-This repo showcases a four-stage AWS data pipeline—ingest → store → analyze → deploy as code. It’s CI/CD-ready and uses AWS S3, Lambda, SQS, CloudWatch, and the AWS CDK. The project mirrors real-world flows—from raw data ingestion to automated infrastructure—for scalability, maintainability, and automation. Future extensions: Athena, Glue, and RDS.
+This repo showcases a four-stage AWS data pipeline—ingest → store → analyze → deploy as code. It’s **CI/CD-ready** and uses **Amazon S3, AWS Lambda, Amazon SQS, Amazon EventBridge (schedule), and the AWS CDK**. The project mirrors real-world flows—from raw ingestion to automated infrastructure—for scalability, maintainability, and automation. *Future extensions:* Amazon Athena, AWS Glue, and Amazon RDS.
 
-1. **API BLS Data to AWS S3**  
-   Fetches BLS productivity and inflation data using both the BLS Public API and direct file downloads with a custom `User-Agent`.  
+1. **API BLS Data → AWS S3**  
+   Fetches BLS productivity and inflation data via the public API and bulk files (with a compliant custom `User-Agent`).  
    Compares file hashes to skip unchanged files, and stores results in Amazon S3.  
    [View Notebook](s3-pipeline-bls-api-part1.ipynb)
 
 2. **API Request via AWS Lambda → S3**  
-   Automates pulling BLS data via their API and dropping the JSON into S3 on demand or on a schedule.  
-   Acts as the ingestion bridge between Part 1 (static BLS files) and Part 3 (query/analysis).  
-   [View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda_bls_api_part2.py)
-
+   Automates pulling BLS data via their API and dropping JSON into S3 on demand or on a schedule.  
+   Acts as the ingestion bridge between Part 1 (bulk/static) and Part 3 (analysis).  
+   **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda_bls_api_part2.py)**
 
 3. **Data Processing and Analysis**  
-   Pulls data from **S3** into AWS Lambda, where it’s cleaned, merged, and transformed using **Pandas** before producing summary reports.  
-   Work is also in progress to hook the pipeline into **Amazon Athena**, so the same datasets can be queried directly with SQL for faster, serverless analysis.  
+   Loads data from **S3** into a **Pandas notebook** (Kaggle) where it’s cleaned, merged, and transformed before producing summary reports.  
+   Work is in progress to add **Amazon Athena** so the same datasets can be queried directly with SQL for faster, serverless analysis.  
    [View Notebook](aws-data-pipeline-warehouse-part3.ipynb)
 
+
 4. **Automated Data Pipeline (Infrastructure as Code)**  
+   Provisions the entire stack with **AWS CDK (Python)** for reproducible, one-command deploys via **CloudFormation**. Deployed from **AWS CloudShell** to skip local setup.  
+   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
 
-   In this part, I set up the pipeline so it can be deployed automatically with code instead of clicking around in the AWS console.  
-   I used the **AWS Cloud Development Kit (CDK)** to write the setup in Python, and then deployed it with **CloudFormation**.  
-   [View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)
+   **Resources**
+   - Lambdas: **ingest** (BLS + DataUSA) and **report** (joins + summaries)
+   - **S3** bucket with **raw/** and **processed/** prefixes (landing → curated)
+   - **SQS** queue for change notifications
 
-- Built two Lambda functions: one for **data ingestion** (BLS API + DataUSA API) and one for **report generation**.
-- Added S3 buckets to store both raw and processed datasets.
-- Set environment variables in Lambda for bucket names, API keys, and API endpoints.
-- Linked **S3 Event Notifications** to send messages to SQS when new data is uploaded.
-- Set **SQS triggers** to automatically run the report Lambda.
-- Deployed everything with **AWS CDK** in **CloudShell**.
-- Used **CloudWatch Events** to run the ingestion Lambda daily, and checked the logs in **CloudWatch Logs** to make sure it worked.
+   **Event wiring**
+   - **S3 ObjectCreated** (raw/) → send message to **SQS**
+   - **SQS** message → triggers **report** Lambda (event source mapping)
+   - **Amazon EventBridge (schedule)** → runs **ingest** Lambda daily
+
+   **Operations**
+   - Env vars for bucket name, endpoints, and keys (e.g., `BUCKET_NAME`, `BLS_BASE_URL`, `POP_API`)
+   - Observability via **CloudWatch Logs** (verify runs, debug)
+   - `cdk synth && cdk deploy --require-approval never` (CDK → CloudFormation)
+
 
 ---
 ## Tech Stack & Services
