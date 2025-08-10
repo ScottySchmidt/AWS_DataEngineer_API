@@ -31,6 +31,27 @@ This repo showcases a four-stage AWS data pipeline—ingest → store → analyz
 - Deployed everything with **AWS CDK** in **CloudShell**.
 - Used **CloudWatch Events** to run the ingestion Lambda daily, and checked the logs in **CloudWatch Logs** to make sure it worked.
 
-
 ---
-More details will be added once all parts are completed and documented.
+## Tech Stack & Services
+
+**Core AWS**
+- Amazon S3 — store raw + processed BLS datasets
+- AWS Lambda — ingest API data and write to S3
+- Amazon SQS — event-driven processing for reports (Part 4)
+- Amazon CloudWatch Events — scheduled Lambda runs
+- AWS IAM — least-privilege roles for Lambda/S3/SQS
+- AWS CDK — infrastructure as code (deploy Lambda/S3/SQS)
+- AWS Glue Data Catalog — crawl/catalog datasets *(planned)*
+- Amazon Athena — SQL on S3 via Glue catalog *(planned)*
+
+**Security & Secrets**
+- Kaggle Secrets — store AWS keys / BLS API key in notebooks
+- AWS Secrets Manager — centralized secrets for prod *(planned)*
+
+**Data & SDKs**
+- Python 3.11, Pandas
+- Boto3 (AWS Python SDK)
+
+**External Data Sources**
+- BLS Public API + bulk files
+- DataUSA Population API
