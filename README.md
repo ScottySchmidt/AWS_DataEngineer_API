@@ -1,7 +1,5 @@
 # Four-Part AWS Data Engineering Pipeline
-This repository contains a complete four-stage pipeline demonstrating AWS-based data ingestion, storage, querying, and deployment automation.  
-It shows how to **build and deploy API-driven pipelines with GitHub CI/CD** using AWS services like **S3, Glue, RDS, IAM, Athena, and Lambda**.  
-The project follows a real-world data engineering flow — from raw data ingestion to automated infrastructure — designed for scalability, maintainability, and automation.
+This repo showcases a four-stage AWS data pipeline—ingest → store → analyze → deploy as code. It’s CI/CD-ready and uses AWS S3, Lambda, SQS, CloudWatch, and the AWS CDK. The project mirrors real-world flows—from raw data ingestion to automated infrastructure—for scalability, maintainability, and automation. Future extensions: Athena, Glue, and RDS.
 
 1. **API BLS Data to AWS S3**  
    Fetches BLS productivity and inflation data using both the BLS Public API and direct file downloads with a custom `User-Agent`.  
