@@ -11,7 +11,7 @@ Mirrors real-world flows for scalability and easy maintenance.
 2. **API Request via AWS Lambda → S3**  
    Automates pulling BLS API data and dropping JSON into S3 on a monthly schedule using Amazon EventBridge.
    Acts as a bridge between Part 1 and Part 3 data analysis.  
-   **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda_bls_api_part2.py](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda-api-s3-part2.py)**
+   **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda_bls_api_part2.py)**
 
    **Method Two:— Glue + Athena (Alternative)**  
    Query S3-hosted BLS data via:  
