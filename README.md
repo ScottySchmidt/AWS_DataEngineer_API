@@ -13,8 +13,8 @@ Mirrors real-world flows for scalability and easy maintenance.
    Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda-api-s3-part2.py)**
 
-   **Option Two:— Glue + Athena (Alternative)**  
-   Query S3-hosted BLS data via:  
+   **Part Two Extention: Glue + Athena**  
+   SQL Query S3-hosted BLS data via:  
    - **AWS Glue Data Catalog** – automated dataset crawling for schema management  
    - **Amazon Athena** – serverless SQL queries directly on S3 data  
    **[View Notebook - in process](glue-athena-part2-5a.ipynb)**
