@@ -9,15 +9,15 @@ Mirrors real-world flows for scalability and easy maintenance.
    **[View Notebook](s3-pipeline-bls-api-part1.ipynb)**
 
 2. **API Request via AWS Lambda → S3**  
-   Automates pulling BLS API data and dropping JSON into S3 on a monthly schedule using Amazon EventBridge.
+   Automates pulling BLS API data and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge.
    Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda-api-s3-part2.py)**
 
-   **Method Two:— Glue + Athena (Alternative)**  
+   **Option Two:— Glue + Athena (Alternative)**  
    Query S3-hosted BLS data via:  
    - **AWS Glue Data Catalog** – automated dataset crawling for schema management  
    - **Amazon Athena** – serverless SQL queries directly on S3 data  
-   **[View Notebook](glue-athena-part2-5a.ipynb)**
+   **[View Notebook - in process](glue-athena-part2-5a.ipynb)**
 
 3. **Data Processing and Analysis**  
    Loads data from **S3** into a **Pandas notebook** (Kaggle) where it’s cleaned, merged, and transformed before producing summary reports.  
@@ -36,6 +36,7 @@ Mirrors real-world flows for scalability and easy maintenance.
     I used AWS CDK to spin up S3 + two Lambdas. CDK also makes the IAM roles for me. No SQS in this version.
     - When a new file lands in `raw/`, the report Lambda runs right away.
     - A schedule (EventBridge) runs the ingest Lambda on the 1st of each month.
+      
     **[View Notebook (coming soon)](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
 
 ---
