@@ -4,7 +4,7 @@ This repo showcases a four-stage AWS data pipeline—ingest → store → analyz
 1. **API BLS Data → AWS S3**  
    Fetches BLS productivity and inflation data via the public API and bulk files (with a compliant custom `User-Agent`).  
    Compares file hashes to skip unchanged files, and stores results in Amazon S3.  
-   [View Notebook](s3-pipeline-bls-api-part1.ipynb)
+   **[View Notebook](s3-pipeline-bls-api-part1.ipynb)**
 
 2. **API Request via AWS Lambda → S3**  
    Automates pulling BLS data via their API and dropping JSON into S3 on demand or on a schedule.  
@@ -12,13 +12,13 @@ This repo showcases a four-stage AWS data pipeline—ingest → store → analyz
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda_bls_api_part2.py)**
 
  2.5A **Glue + Athena**
-     Query S3-hosted BLS data via **AWS Glue Data Catalog** and **Amazon Athena**.  
-     [View Notebook](glue-athena-part2-5a.ipynb)
+      Query S3-hosted BLS data via **AWS Glue Data Catalog** and **Amazon Athena**.  
+      **[View Notebook](glue-athena-part2-5a.ipynb)**
 
 3. **Data Processing and Analysis**  
    Loads data from **S3** into a **Pandas notebook** (Kaggle) where it’s cleaned, merged, and transformed before producing summary reports.  
    Work is in progress to add **Amazon Athena** so the same datasets can be queried directly with SQL for faster, serverless analysis.  
-   [View Notebook](aws-data-pipeline-warehouse-part3.ipynb)
+   **[View Notebook](aws-data-pipeline-warehouse-part3.ipynb)**
 
 
 4. **Automated Data Pipeline (Infrastructure as Code)**  
