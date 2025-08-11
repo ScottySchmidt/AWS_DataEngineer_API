@@ -32,7 +32,8 @@ Mirrors real-world flows for scalability and easy maintenance.
    - S3 drops messages → SQS holds them → Lambda grabs when ready
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
 
-   **Option B- Core AWS CDK with Python (Alternative)** 
+   **Option B- Core AWS CDK with Python (Alternative)**
+   
     I used AWS CDK to spin up S3 + two Lambdas. CDK also makes the IAM roles for me. No SQS in this version.
     - When a new file lands in `raw/`, the report Lambda runs right away.
     - A schedule (EventBridge) runs the ingest Lambda on the 1st of each month.
