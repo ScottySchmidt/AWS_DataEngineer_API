@@ -1,4 +1,14 @@
-#THIS IS MY LAMBDA FUNCTION WITHIN AWS:
+"""
+Ingest DataUSA population snapshot → AWS S3.
+
+Why urllib?
+- AWS Lambda's base Python runtime doesn't include the third-party 'requests' library.
+- Using urllib.request (stdlib) avoids packaging a layer/dependency. It's lighter and just works.
+- If we ever need advanced HTTP niceties, we can switch to 'requests' via a Lambda Layer.
+
+Env:
+- BUCKET_NAME: target S3 bucket
+"""
 import os, json, boto3
 from datetime import datetime
 import urllib.request
