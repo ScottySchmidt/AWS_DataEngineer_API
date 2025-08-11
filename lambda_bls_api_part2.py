@@ -5,9 +5,9 @@ AWS Lambda that fetches DataUSA Population (Nation × Year) JSON and uploads it 
 Uses Python's stdlib urllib (no extra deps in Lambda) and writes to a fixed key, returning 200 on success or 500 on failures.
 
 Why urllib?
-- AWS Lambda's base Python runtime doesn't include the third-party 'requests' library.
-- Using urllib.request (stdlib) avoids packaging a layer/dependency.
-- If we ever need advanced HTTP niceties, we can switch to 'requests' via a Lambda Layer.
+- Lambda’s Python runtime doesn’t ship with `requests`.
+- `urllib` is built-in, so no extra layer/package.
+- If I need fancier HTTP later, I’ll add a `requests` layer.
 """
 import os, json, boto3
 from datetime import datetime
