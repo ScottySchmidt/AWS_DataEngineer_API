@@ -11,7 +11,7 @@ This repo showcases a four-stage AWS data pipeline—ingest → store → analyz
    Acts as the ingestion bridge between Part 1 (bulk/static) and Part 3 (analysis).  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda_bls_api_part2.py)**
 
-2.5A **Glue + Athena**
+ 2.5A **Glue + Athena**
      Query S3-hosted BLS data via **AWS Glue Data Catalog** and **Amazon Athena**.  
      [View Notebook](glue-athena-part2-5a.ipynb)
 
