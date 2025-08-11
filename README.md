@@ -1,4 +1,4 @@
-   # Four-Part AWS Data Engineering Pipeline
+# Four-Part AWS Data Engineering Pipeline
 A four-stage pipeline on AWS — ingest → store → analyze → deploy-as-code.  
 Uses S3, Lambda, SQS, EventBridge, Glue, Athena and CDK.  Deployed from AWS CloudShell; no local setup.  
 Mirrors real-world flows for scalability and easy maintenance.
@@ -13,7 +13,7 @@ Mirrors real-world flows for scalability and easy maintenance.
    Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda-api-s3-part2.py)**
 
-   **Part Two Extention: Glue + Athena**  
+   **Part 2.5 Extension: Glue + Athena**  
    SQL Query S3-hosted BLS data via:  
    - **AWS Glue Data Catalog** – automated dataset crawling for schema management  
    - **Amazon Athena** – serverless SQL queries directly on S3 data  
@@ -34,17 +34,17 @@ Mirrors real-world flows for scalability and easy maintenance.
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
 
 ---
-## AWS Tech Stack 
-- S3 — store raw + processed BLS datasets
-- Lambda — ingest API data and write to S3
-- SQS — event-driven processing for reports (Part 4)
-- CloudWatch Events — scheduled Lambda runs
-- IAM — least-privilege roles for Lambda/S3/SQS
-- CDK — infrastructure as code (deploy Lambda/S3/SQS)
-- Glue Data Catalog — crawl/catalog datasets *(planned)*
-- Athena — SQL on S3 via Glue catalog *(planned)*
+## AWS Tech Stack  
+- **Amazon S3** — buckets for both raw and processed BLS datasets  
+- **AWS Lambda** — pulls API data and drops it into S3  
+- **Amazon SQS** — queue for event-driven report processing (Part 4)  
+- **Amazon EventBridge** — kicks off Lambda runs on a set schedule  
+- **AWS IAM** — scoped-down roles for Lambda, S3, and SQS access  
+- **AWS CDK** — spins up the stack (Lambda, S3, SQS) as code  
+- **AWS Glue Data Catalog** — keeps S3 datasets organized with schemas  
+- **Amazon Athena** — run SQL queries directly on S3 data via the Glue catalog  
 
 ### Security, SDKs & Data Sources
-- **Secrets:** Kaggle Secrets (dev/demo); AWS Secrets Manager
-- **SDKs:** Python 3.11, Pandas, Boto3 (AWS SDK for Python)
+- **Secrets:** Kaggle Secrets; AWS Secrets Manager
+- **SDKs:** Python, Pandas, Boto3 (AWS SDK for Python)
 - **Sources:** BLS Public API + bulk files; DataUSA API
