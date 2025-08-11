@@ -9,7 +9,7 @@ Mirrors real-world flows for scalability and easy maintenance.
    **[View Notebook](s3-pipeline-bls-api-part1.ipynb)**
 
 2. **API Request via AWS Lambda → S3**  
-   Automates pulling BLS API data and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge.
+   Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge.
    Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda-api-s3-part2.py)**
 
@@ -29,7 +29,7 @@ Mirrors real-world flows for scalability and easy maintenance.
    - Lambdas: ingest (BLS + DataUSA) and report (joins + summaries)
    - Storage: S3 with `raw/` → `processed/`
    - Events: EventBridge (daily) runs ingest; S3 `raw/` create → SQS → triggers report Lambda
-   - S3 drops messages → SQS holds them → Lambda grabs when ready
+    -S3 sends notifications → SQS holds them → Lambda grabs when ready
      
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
 
