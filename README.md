@@ -30,19 +30,19 @@ Mirrors real-world flows for scalability and easy maintenance.
    - Storage: S3 with `raw/` → `processed/`
    - Events: EventBridge (daily) runs ingest; S3 `raw/` create → SQS → triggers report Lambda
    - S3 drops messages → SQS holds them → Lambda grabs when ready
+     
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
 
 ---
-## Tech Stack & Services
-**Core AWS**
-- Amazon S3 — store raw + processed BLS datasets
-- AWS Lambda — ingest API data and write to S3
-- Amazon SQS — event-driven processing for reports (Part 4)
-- Amazon CloudWatch Events — scheduled Lambda runs
-- AWS IAM — least-privilege roles for Lambda/S3/SQS
-- AWS CDK — infrastructure as code (deploy Lambda/S3/SQS)
-- AWS Glue Data Catalog — crawl/catalog datasets *(planned)*
-- Amazon Athena — SQL on S3 via Glue catalog *(planned)*
+## AWS Tech Stack 
+- S3 — store raw + processed BLS datasets
+- Lambda — ingest API data and write to S3
+- SQS — event-driven processing for reports (Part 4)
+- CloudWatch Events — scheduled Lambda runs
+- IAM — least-privilege roles for Lambda/S3/SQS
+- CDK — infrastructure as code (deploy Lambda/S3/SQS)
+- Glue Data Catalog — crawl/catalog datasets *(planned)*
+- Athena — SQL on S3 via Glue catalog *(planned)*
 
 ### Security, SDKs & Data Sources
 - **Secrets:** Kaggle Secrets (dev/demo); AWS Secrets Manager
