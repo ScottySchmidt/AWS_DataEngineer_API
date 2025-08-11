@@ -1,4 +1,4 @@
-# Four-Part AWS Data Engineering Pipeline
+   # Four-Part AWS Data Engineering Pipeline
 A four-stage pipeline on AWS — ingest → store → analyze → deploy-as-code.  
 Uses S3, Lambda, SQS, EventBridge, Glue, Athena and CDK.  Deployed from AWS CloudShell; no local setup.  
 Mirrors real-world flows for scalability and easy maintenance.
@@ -31,14 +31,6 @@ Mirrors real-world flows for scalability and easy maintenance.
    - Events: EventBridge (daily) runs ingest; S3 `raw/` create → SQS → triggers report Lambda
    - S3 drops messages → SQS holds them → Lambda grabs when ready
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
-
-   **Option B- Core AWS CDK with Python (Alternative)**
-   
-    I used AWS CDK to spin up S3 + two Lambdas. CDK also makes the IAM roles for me. No SQS in this version.
-    - When a new file lands in `raw/`, the report Lambda runs right away.
-    - A schedule (EventBridge) runs the ingest Lambda on the 1st of each month.
-      
-    **[View Notebook (coming soon)](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
 
 ---
 ## Tech Stack & Services
