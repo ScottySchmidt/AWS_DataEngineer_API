@@ -3,7 +3,7 @@ This repo showcases a four-stage AWS data pipeline—ingest → store → analyz
 The project mirrors real-world flows—from raw ingestion to automated infrastructure—for scalability, maintainability, and automation. *Future extentions:* Amazon Athena, AWS Glue, and Amazon RDS.
 
 1. **API BLS Data → AWS S3**  
-   Fetches BLS productivity and inflation data using my registered public API and bulk files (with a compliant custom `User-Agent`).  
+   Fetches BLS productivity and inflation data using my registered public API and bulk files (with a compliant custom User-Agent).  
    Compares file hashes to skip unchanged files, and stores results in Amazon S3.  
    **[View Notebook](s3-pipeline-bls-api-part1.ipynb)**
 
