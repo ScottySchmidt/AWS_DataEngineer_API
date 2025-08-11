@@ -3,7 +3,7 @@ A four-stage pipeline on AWS — ingest → store → analyze → deploy-as-code
 Uses S3, Lambda, SQS, EventBridge, Glue, Athena and CDK.  Deployed from AWS CloudShell; no local setup.  
 Mirrors real-world flows for scalability and easy maintenance.
 
-1. **API BLS Data → AWS S3**  
+1. **API Data from BLS → AWS S3**  
    Fetches BLS productivity and inflation data using my registered public API and bulk files (with a compliant custom User-Agent).  
    Compares file hashes to skip unchanged files, and stores results in Amazon S3.  
    **[View Notebook](s3-pipeline-bls-api-part1.ipynb)**
@@ -13,7 +13,7 @@ Mirrors real-world flows for scalability and easy maintenance.
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda-api-s3-part2.py)**
 
    **Part Two Extension: Glue + Athena**  
-   SQL Query S3-hosted BLS data via:  
+   Query S3-hosted data using SQL:  
    - **AWS Glue Data Catalog** – automated dataset crawling for schema management  
    - **Amazon Athena** – serverless SQL queries directly on S3 data  
    **[View Notebook - in process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/glue-athena-part2-extension.ipynb)**
