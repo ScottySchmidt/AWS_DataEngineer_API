@@ -44,7 +44,6 @@ This repo showcases a four-stage AWS data pipeline—ingest → store → analyz
 
 ---
 ## Tech Stack & Services
-
 **Core AWS**
 - Amazon S3 — store raw + processed BLS datasets
 - AWS Lambda — ingest API data and write to S3
@@ -55,14 +54,8 @@ This repo showcases a four-stage AWS data pipeline—ingest → store → analyz
 - AWS Glue Data Catalog — crawl/catalog datasets *(planned)*
 - Amazon Athena — SQL on S3 via Glue catalog *(planned)*
 
-**Security & Secrets**
-- Kaggle Secrets — store AWS keys / BLS API key in notebooks
-- AWS Secrets Manager — centralized secrets for prod 
 
-**Data & SDKs**
-- Python 3.11, Pandas
-- Boto3 (AWS Python SDK)
-  
-**External Data Sources**
-- BLS Public API + bulk files
-- DataUSA Population API
+### Security, SDKs & Data Sources
+- **Secrets:** Kaggle Secrets (dev/demo); AWS Secrets Manager
+- **SDKs:** Python 3.11, Pandas, Boto3 (AWS SDK for Python)
+- **Sources:** BLS Public API + bulk files; DataUSA API
