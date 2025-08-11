@@ -1,13 +1,12 @@
 """
-Ingest DataUSA population snapshot → AWS S3.
+Ingest DataUSA population → AWS S3.
+AWS Lambda that fetches DataUSA Population (Nation × Year) JSON and uploads it to S3.
+Uses Python's stdlib urllib (no extra deps in Lambda) and writes to a fixed key, returning 200 on success or 500 on failures.
 
 Why urllib?
 - AWS Lambda's base Python runtime doesn't include the third-party 'requests' library.
-- Using urllib.request (stdlib) avoids packaging a layer/dependency. It's lighter and just works.
+- Using urllib.request (stdlib) avoids packaging a layer/dependency.
 - If we ever need advanced HTTP niceties, we can switch to 'requests' via a Lambda Layer.
-
-Env:
-- BUCKET_NAME: target S3 bucket
 """
 import os, json, boto3
 from datetime import datetime
@@ -26,10 +25,14 @@ def lambda_handler(event, context):
             response_json = json.loads(data)
     except Exception as e:
         return {"statusCode": 500, "body": f"API request failed: {e}"}
-    key = "datausa_population.json"
-    #key = f"datausa_population_{datetime.now().strftime('%Y%m%d%H%M%S')}.json"
+    # Overwrite the "latest" snapshot
+    key = "datausa_population.json" 
+    #key = f"datausa_population_{datetime.now().strftime('%Y%m%d%H%M%S')}.json" #Timestamp version, but is harder to overrite later
+
     try:
+        # Send file into S3 as JSON file:
         s3.put_object(Bucket=bucket, Key=key, Body=json.dumps(response_json))
     except Exception as e:
+        # Failed:
         return {"statusCode": 500, "body": f"S3 upload failed: {e}"}
-    return {"statusCode": 200, "body": f"✅ Uploaded key to bucket"}
+    return {"statusCode": 200, "body": f" Uploaded key to bucket"}
