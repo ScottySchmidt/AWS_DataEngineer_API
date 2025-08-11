@@ -1,6 +1,7 @@
 # Four-Part AWS Data Engineering Pipeline
-This repo showcases a four-stage AWS data pipeline—ingest → store → analyze → deploy as code. It’s **CI/CD-ready** and uses **Amazon S3, AWS Lambda, Amazon SQS, Amazon EventBridge (schedule), and the AWS CDK**. 
-The project mirrors real-world flows—from raw ingestion to automated infrastructure—for scalability, maintainability, and automation. *Future extentions:* Amazon Athena, AWS Glue, and Amazon RDS.
+A four-stage pipeline on AWS — ingest → store → analyze → deploy-as-code.  
+Uses S3, Lambda, SQS, EventBridge, Glue, Athena and CDK.  Deployed from AWS CloudShell; no local setup.  
+Mirrors real-world flows for scalability and easy maintenance.
 
 1. **API BLS Data → AWS S3**  
    Fetches BLS productivity and inflation data using my registered public API and bulk files (with a compliant custom User-Agent).  
@@ -24,11 +25,11 @@ The project mirrors real-world flows—from raw ingestion to automated infrastru
    **[View Notebook](aws-data-pipeline-warehouse-part3.ipynb)**
 
 4. **Automated Data Pipeline (Infrastructure as Code)**  
-   Ship the stack with AWS CDK (Python) from CloudShell — no local setup.
+   Ship the stack with AWS CDK (Python) from CloudShell using no local setup.
    - Lambdas: ingest (BLS + DataUSA) and report (joins + summaries)
    - Storage: S3 with `raw/` → `processed/`
    - Events: EventBridge (daily) runs ingest; S3 `raw/` create → SQS → triggers report Lambda
-   - SQS (why): buffer + retry so events don’t pile up or get lost — S3 drops a note, report picks it up
+   - S3 drops messages → SQS holds them → Lambda grabs when ready
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
 
    **Option B- Core AWS CDK with Python (Alternative)** 
