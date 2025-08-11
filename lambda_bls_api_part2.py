@@ -1,5 +1,6 @@
 """
-Ingest DataUSA population → AWS S3.
+Part 2 — AWS Lambda: DataUSA → S3
+
 AWS Lambda that fetches DataUSA Population (Nation × Year) JSON and uploads it to S3.
 Uses Python's stdlib urllib (no extra deps in Lambda) and writes to a fixed key, returning 200 on success or 500 on failures.
 
