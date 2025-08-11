@@ -20,18 +20,17 @@ Mirrors real-world flows for scalability and easy maintenance.
    **[View Notebook - in process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/glue-athena-part2-extension.ipynb)**
 
 3. **Data Processing and Analysis**  
-   Loads data from **S3** into a **Pandas notebook** (Kaggle) where it’s cleaned, merged, and transformed before producing summary reports.  
+   Loads data from **S3** into a **Pandas notebook** (Kagglfe) where it’s cleaned, merged, and transformed before producing summary reports.  
    Work is in progress to add **Amazon Athena** so the same datasets can be queried directly with SQL for faster, serverless analysis.  
    **[View Notebook](aws-data-pipeline-warehouse-part3.ipynb)**
 
 4. **Automated Data Pipeline (Infrastructure as Code)**  
    Ship the stack with AWS CDK (Python) from CloudShell using no local setup.
-   - Lambdas: ingest (BLS + DataUSA) and report (joins + summaries)
-   - Storage: S3 with `raw/` → `processed/`
-   - Events: EventBridge (daily) runs ingest; S3 `raw/` create → SQS → triggers report Lambda
-    -S3 sends notifications → SQS holds them → Lambda grabs when ready
-     
-   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
+   Lambdas – one to pull in data from BLS and DataUSA, another to join the datasets and create summary reports
+   Storage – S3 bucket with raw/ for new data and processed/ for the finished outputs
+   Events – EventBridge runs the ingest Lambda on a daily schedule. When a new file lands in raw/, S3 sends a notification to SQS.
+   The queue buffers the event until the report Lambda picks it up and processes it.
+     **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
 
 ---
 ## AWS Tech Stack  
