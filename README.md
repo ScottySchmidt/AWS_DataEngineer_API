@@ -24,7 +24,7 @@ Mirrors real-world flows for scalability and easy maintenance.
    **[View Notebook](aws-data-pipeline-warehouse-part3.ipynb)**
 
  4. **Automated Data Pipeline (Infrastructure as Code)**  
-    Deploy the pipeline with AWS CDK (Python) from CloudShell — no local setup needed.
+    Deploy the pipeline with AWS CDK (Python) from CloudShell. No local setup is needed.
     One Lambda pulls data from BLS and DataUSA, and another joins the datasets to create summary reports.
     An S3 bucket stores both raw data and the processed outputs.
     EventBridge runs the ingest Lambda on a daily schedule.
