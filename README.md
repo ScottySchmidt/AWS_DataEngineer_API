@@ -42,7 +42,6 @@ This repo showcases a four-stage AWS data pipeline—ingest → store → analyz
    - Observability via **CloudWatch Logs** (verify runs, debug)
    - `cdk synth && cdk deploy --require-approval never` (CDK → CloudFormation)
 
-
 ---
 ## Tech Stack & Services
 
@@ -58,12 +57,12 @@ This repo showcases a four-stage AWS data pipeline—ingest → store → analyz
 
 **Security & Secrets**
 - Kaggle Secrets — store AWS keys / BLS API key in notebooks
-- AWS Secrets Manager — centralized secrets for prod *(planned)*
+- AWS Secrets Manager — centralized secrets for prod 
 
 **Data & SDKs**
 - Python 3.11, Pandas
 - Boto3 (AWS Python SDK)
-
+  
 **External Data Sources**
 - BLS Public API + bulk files
 - DataUSA Population API
