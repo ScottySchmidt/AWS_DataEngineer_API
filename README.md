@@ -2,7 +2,7 @@
 A four-stage pipeline on AWS — ingest → store → analyze → deploy-as-code.  
 Uses S3, Lambda, SQS, EventBridge, Glue, Athena and CDK.  Deployed from AWS CloudShell; no local setup.  
 Mirrors real-world flows for scalability and easy maintenance.
-
+---
 1. **API Data from BLS → AWS S3**  
    Fetches BLS productivity and inflation data using my registered public API and bulk files (with a compliant custom User-Agent).  Compares file hashes to skip unchanged files, and stores results in Amazon S3.   **[View Notebook](s3-pipeline-bls-api-part1.ipynb)**
 
