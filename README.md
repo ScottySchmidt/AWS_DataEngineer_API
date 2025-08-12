@@ -19,8 +19,7 @@ Mirrors real-world flows for scalability and easy maintenance.
    **[View Notebook - in process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/glue-athena-part2-extension.ipynb)**
 
 3. **Data Processing and Analysis**  
-   Loads data from **S3** into a **Pandas notebook** (Kagglfe) where it’s cleaned, merged, and transformed before producing summary reports.  
-   Work is in progress to add **Amazon Athena** so the same datasets can be queried directly with SQL for faster, serverless analysis.  
+   Loads data from **S3** into a **Pandas notebook** (Kagglfe) where it’s cleaned, merged, and transformed before producing summary reports.   Work is in progress to add **Amazon Athena** so the same datasets can be queried directly with SQL for faster, serverless analysis.  
    **[View Notebook](aws-data-pipeline-warehouse-part3.ipynb)**
 
  4. **Automated Data Pipeline (Infrastructure as Code)**  
@@ -29,6 +28,7 @@ Mirrors real-world flows for scalability and easy maintenance.
     An S3 bucket stores both raw data and the processed outputs.
     EventBridge runs the ingest Lambda on a daily schedule.
     When a new file lands in S3, it sends a notification to SQS.
+    bls_pipeline directory showing CDK stack code (bls_stack.py) and Lambda functions folder:
     <img width="649" height="162" alt="bls-pipeline" src="https://github.com/user-attachments/assets/23b539c3-f222-476b-8f26-97c216b3ed90" />
 
     The queue holds the event until the report Lambda picks it up and processes it.
