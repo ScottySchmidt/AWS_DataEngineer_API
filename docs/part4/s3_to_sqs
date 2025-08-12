@@ -1,3 +1,7 @@
+# S3 → SQS Notification Config  
+This shows the rules that make S3 send a message to SQS whenever new files get uploaded.
+--------------------------------------------
+
 ~ $ aws s3api get-bucket-notification-configuration --bucket "$BUCKET"
 
 {
