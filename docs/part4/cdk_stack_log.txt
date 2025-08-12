@@ -1,3 +1,7 @@
+# AWS CDK Deployment Log  
+Shows all AWS resources created and wired together (Lambda, S3, SQS, IAM roles, etc.) for Part 4 of the BLS pipeline.
+----------------------------------------
+
 ~ $ STACK=$(aws cloudformation list-stacks --stack-status-filter CREATE_COMPLETE UPDATE_COMPLETE --query 'reverse(sort_by(StackSummaries,&CreationTime))[0].StackName' --output text)
 
 ~ $ 
