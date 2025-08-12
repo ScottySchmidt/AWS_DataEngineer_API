@@ -10,10 +10,10 @@ Mirrors data pipeline flows for scalability and easy maintenance.
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-lambda-api-s3.py)**
 
-   **Glue → Athena — Query S3 hosted Data - Part2 Extension**
-    #### Flow: S3 (raw JSON) → Glue Crawler → Data Catalog → ETL (CTAS/Glue) → S3 (Parquet, partitioned) → Athena → results (tables/CSVs)
-    - **AWS Glue Data Catalog** – automated dataset crawling for schema management  
-    - **Amazon Athena** – serverless SQL queries directly on S3 data  
+   ### **Glue → Athena — Query S3 hosted Data - Part2 Extension**
+    **Flow:** S3 (raw JSON) → Glue Crawler → Data Catalog → ETL → S3 (Parquet) → Athena → results (tables)
+    - AWS Glue Data Catalog – automated dataset crawling for schema management  
+    - Amazon Athena – serverless SQL queries directly on S3 data  
     **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)**
 
 4. **Data Processing and Analysis**  
