@@ -32,12 +32,8 @@ Mirrors data pipeline flows for scalability and easy maintenance.
     The queue holds the event until the report Lambda picks it up and processes it.
    **[View Logs Folder](https://github.com/ScottySchmidt/AWS_DataEngineer_API/tree/main/docs/part4)**
 
-    This shows all the AWS resources that were created automatically when I deployed Part 4 with AWS CDK:
-    <details>
-     <summary>CloudFormation Resources (screenshot)</summary>
-     <img src="src="https://github.com/user-attachments/assets/c31c234c-d865-489c-89c1-c65beab102ed"" alt="BlsPipelineStack Resources" width="700">
-   </details>
-    This includes Lambda functions, S3 bucket, SQS queue, and event triggers that make the pipeline run.
+    This shows all the AWS resources that were created automatically when I deployed Part 4 with AWS CDK: 
+    <img width="600" height="400" alt="bls_pipeline_stack" src="https://github.com/user-attachments/assets/0540c36d-3b47-42f5-98ea-a2a08e2436ed" />
 
 ---
 ### AWS Tech Stack  
