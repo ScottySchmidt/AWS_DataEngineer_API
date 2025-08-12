@@ -10,16 +10,18 @@ Mirrors data pipeline flows for scalability and easy maintenance.
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-lambda-api-s3.py)**
 
-   **Part Two Extension: Glue + Athena** Query S3-hosted data:  
-   - **AWS Glue Data Catalog** – automated dataset crawling for schema management  
-   - **Amazon Athena** – serverless SQL queries directly on S3 data  
-   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)**
+   **Glue → Athena — Query S3 hosted Data - Part2 Extension**
+    #### Flow: S3 (raw JSON) → Glue Crawler → Data Catalog → ETL (CTAS/Glue) → S3 (Parquet, partitioned) → Athena → results (tables/CSVs)
+    - **AWS Glue Data Catalog** – automated dataset crawling for schema management  
+    - **Amazon Athena** – serverless SQL queries directly on S3 data  
+    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)**
 
-3. **Data Processing and Analysis**  
-   Loads data from **S3** into a **Pandas notebook** (Kagglfe) where it’s cleaned, merged, and transformed before producing summary reports.   Work is in progress to add **Amazon Athena** so the same datasets can be queried directly with SQL for faster, serverless analysis.  
+4. **Data Processing and Analysis**  
+   Loads data from S3 into a Pandas notebook where it’s cleaned, merged, and transformed before producing summary reports.
+   Work is in progress to add Amazon Athena so the same datasets can be queried directly with SQL for faster, serverless analysis.  
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb)**
 
- 4. **Automated Data Pipeline - Infrastructure as Code**  
+ 5. **Infrastructure as Code — AWS CDK**  
     Deploy the pipeline with AWS CDK (Python) from CloudShell. No local setup is needed.
     One Lambda pulls data from BLS and DataUSA, and another joins the datasets to create summary reports.
     An S3 bucket stores both raw data and the processed outputs.
