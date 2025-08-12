@@ -29,6 +29,8 @@ Mirrors real-world flows for scalability and easy maintenance.
     An S3 bucket stores both raw data and the processed outputs.
     EventBridge runs the ingest Lambda on a daily schedule.
     When a new file lands in S3, it sends a notification to SQS.
+    <img width="649" height="162" alt="bls-pipeline" src="https://github.com/user-attachments/assets/23b539c3-f222-476b-8f26-97c216b3ed90" />
+
     The queue holds the event until the report Lambda picks it up and processes it.
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
 
