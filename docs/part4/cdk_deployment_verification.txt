@@ -1,0 +1,34 @@
+# AWS CDK Stack Resources — Part 4 (Sanitized)
+This a receipt from AWS CloudFormation listing my BlsPipelineStack CDK deployment showing:
+1. Ingest & report Lambdas exist, have log groups, and are linked to IAM roles: /aws/lambda/<lambda-ingest>  <iam-role-ingest> 
+2. Data lake bucket exists and has an S3 → SQS notification handler.
+3. Main SQS queue handles new file events from S3:  AWS::SQS::Queue . Then Queue allows S3 to publish it. 
+4. The queue is actively wired to trigger the Report Lambda when messages arriv: AWS::Lambda::EventSourceMapping
+-----------------------------
+
+-------------------------------------------------------------------------------------
+|                              ListStackResources                                   |
++--------------------------------+---------------------------------+----------------+
+| Logical                        | Physical (sanitized)           | Type           |
++--------------------------------+---------------------------------+----------------+
+| BlsIngestFnCD0BBA37             | <lambda-ingest>                 | AWS::Lambda::Function
+| BlsIngestFnLogGroupB9A6D15E     | /aws/lambda/<lambda-ingest>      | AWS::Logs::LogGroup
+| BlsIngestFnServiceRole86F50F7D  | <iam-role-ingest>                | AWS::IAM::Role
+| BlsIngestFnServiceRoleDefaultPolicy51956801 | <iam-policy-ingest>   | AWS::IAM::Policy
+| BlsReportFn1ABE5E21             | <lambda-report>                  | AWS::Lambda::Function
+| BlsReportFnLogGroup5150CF2E     | /aws/lambda/<lambda-report>      | AWS::Logs::LogGroup
+| BlsReportFnServiceRole652FAAE5  | <iam-role-report>                | AWS::IAM::Role
+| BlsReportFnServiceRoleDefaultPolicy0F294BAC | <iam-policy-report>  | AWS::IAM::Policy
+| BucketNotificationsHandler...   | <lambda-bucket-notify>           | AWS::Lambda::Function
+| BucketNotificationsHandler...Role | <iam-role-bucket-notify>       | AWS::IAM::Role
+| BucketNotificationsHandler...RoleDefaultPolicy | <iam-policy-bucket-notify> | AWS::IAM::Policy
+| CDKMetadata                     | <uuid>                          | AWS::CDK::Metadata
+| DLQ581697C4                     | <sqs-dlq-url>                    | AWS::SQS::Queue
+| DataBucketE3889A50               | <bucket-name>                    | AWS::S3::Bucket
+| DataBucketNotifications11EB1C2E | <custom-s3-bucket-notifications> | Custom::S3BucketNotifications
+| IngestDaily8931501E              | <eventbridge-rule>               | AWS::Events::Rule
+| IngestDailyAllowEventRule...     | <lambda-permission>              | AWS::Lambda::Permission
+| JsonWriteQueue5A3EABE8           | <sqs-main-url>                   | AWS::SQS::Queue
+| JsonWriteQueuePolicy56E0CD1B     | <sqs-main-policy>                | AWS::SQS::QueuePolicy
+| SqsToReportBAD18524              | <event-source-mapping-id>        | AWS::Lambda::EventSourceMapping
++--------------------------------+---------------------------------+----------------+
