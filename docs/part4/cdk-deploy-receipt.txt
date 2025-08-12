@@ -1,0 +1,15 @@
+# AWS CDK Deployment Log (sanitized)
+
+lsPipelineStack — deploy OK (no changes) in 1.21s, region us-east-1
+Stack ARN: arn:aws:cloudformation:us-east-1:<account-id>:stack/BlsPipelineStack/****************
+
+Resources (summary):
+- AWS::Lambda::Function .......... BlsIngestFn, BlsReportFn
+- AWS::Logs::LogGroup ............ /aws/lambda/<ingest>, /aws/lambda/<report>
+- AWS::IAM::Role/Policy .......... service roles + default policies (CDK-managed)
+- AWS::S3::Bucket ................ <canonical-bucket> (data lake)
+- Custom::S3BucketNotifications .. S3 -> SQS notifications (prefix: raw/)
+- AWS::SQS::Queue ................ JsonWriteQueue, DLQ
+- AWS::SQS::QueuePolicy .......... allows s3.amazonaws.com from <canonical-bucket-arn>
+- AWS::Events::Rule .............. IngestDaily (schedule)
+- AWS::Lambda::EventSourceMapping  SqsToReport (SQS -> Report Lambda)
