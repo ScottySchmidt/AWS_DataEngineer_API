@@ -4,11 +4,11 @@ Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena and CDK.  Deployed from AWS
 Mirrors data pipeline flows for scalability and easy maintenance.
 
 1. **API Data from BLS → AWS S3**  
-   Fetches BLS productivity and inflation data using my registered public API and bulk files (with a compliant custom User-Agent).  Compares file hashes to skip unchanged files, and stores results in Amazon S3.   **[View Notebook](s3-pipeline-bls-api-part1.ipynb)**
+   Fetches BLS productivity and inflation data using my registered public API and bulk files (with a compliant custom User-Agent).  Compares file hashes to skip unchanged files, and stores results in Amazon S3.   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)**
 
 2. **API Request via AWS Lambda → S3**  
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
-   **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/lambda-api-s3-part2.py)**
+   **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-lambda-api-s3.py)**
 
    **Part Two Extension: Glue + Athena**  
    Query S3-hosted data using SQL:  
@@ -18,7 +18,7 @@ Mirrors data pipeline flows for scalability and easy maintenance.
 
 3. **Data Processing and Analysis**  
    Loads data from **S3** into a **Pandas notebook** (Kagglfe) where it’s cleaned, merged, and transformed before producing summary reports.   Work is in progress to add **Amazon Athena** so the same datasets can be queried directly with SQL for faster, serverless analysis.  
-   **[View Notebook](aws-data-pipeline-warehouse-part3.ipynb)**
+   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb)**
 
  4. **Automated Data Pipeline - Infrastructure as Code**  
     Deploy the pipeline with AWS CDK (Python) from CloudShell. No local setup is needed.
