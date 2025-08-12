@@ -1,6 +1,9 @@
 # AWS CDK Deployment Log (sanitized)
 
-Two Lambdas: one downloads API data to S3/raw, the other processes those files into S3. CDK set up the IAM roles. When a new file hits S3, S3 notifies SQS, and SQS triggers the Report Lambda. Ingest runs daily on schedule.
+Two Lambdas: one downloads API data to S3/raw, the other processes those files into S3. 
+CDK set up the IAM roles. 
+When a new file hits S3, S3 notifies SQS, and SQS triggers the Report Lambda.
+Ingest runs daily on schedule.
 ------------------------------
 
 BlsPipelineStack— deploy OK (no changes) in 1.21s, region us-east-1
