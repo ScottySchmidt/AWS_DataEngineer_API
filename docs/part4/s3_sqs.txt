@@ -1,4 +1,8 @@
 # S3 → SQS Notification Config (sanitized)
+When S3 detects new file it tells SQS.
+
+aws s3api get-bucket-notification-configuration --bucket <data-bucket> --region <region>| jq
+(OUTPUT BELOW)
 ----------------------------------------------
 
 {
