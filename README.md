@@ -8,7 +8,7 @@ Mirrors data pipeline flows for scalability and easy maintenance.
     Compares file hashes to skip unchanged files, and stores results in Amazon S3.
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)**
 
-3. **API Request via AWS Lambda → S3**  
+2. **API Request via AWS Lambda → S3**  
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-lambda-api-s3.py)**
 
@@ -18,12 +18,12 @@ Mirrors data pipeline flows for scalability and easy maintenance.
     - Amazon Athena – serverless SQL queries directly on S3 data  
     **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)**
 
-4. **Data Processing and Analysis**  
+3. **Data Processing and Analysis**  
    Loads data from S3 into a Pandas notebook where it’s cleaned, merged, and transformed before producing summary reports.
    Work is in progress to add Amazon Athena so the same datasets can be queried directly with SQL for faster, serverless analysis.  
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb)**
 
- 5. **Infrastructure as Code — AWS CDK**  
+ 4. **Infrastructure as Code — AWS CDK**  
     Deploy the pipeline with AWS CDK (Python) from CloudShell. No local setup is needed.
     One Lambda pulls data from BLS and DataUSA, and another joins the datasets to create summary reports.
     An S3 bucket stores both raw data and the processed outputs.
@@ -31,6 +31,10 @@ Mirrors data pipeline flows for scalability and easy maintenance.
     When a new file lands in S3, it sends a notification to SQS.
     The queue holds the event until the report Lambda picks it up and processes it.
    **[View Logs Folder](https://github.com/ScottySchmidt/AWS_DataEngineer_API/tree/main/docs/part4)**
+
+    This shows all the AWS resources that were created automatically when I deployed Part 4 with AWS CDK: 
+    <img width="1185" height="774" alt="bls_pipeline_stack" src="https://github.com/user-attachments/assets/c31c234c-d865-489c-89c1-c65beab102ed" />
+    This includes Lambda functions, S3 bucket, SQS queue, and event triggers that make the pipeline run.
 
 ---
 ### AWS Tech Stack  
