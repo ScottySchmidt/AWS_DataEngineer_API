@@ -13,7 +13,7 @@ Mirrors data pipeline flows for scalability and easy maintenance.
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-lambda-api-s3.py)**
 
    #### Part2.5 Addition Glue → Athena: Query S3 hosted Data 
-    **Flow:** S3 (raw JSON) → Glue Crawler → Data Catalog → ETL → S3 (Parquet) → Athena → results (tables)
+     Flow: S3 (raw JSON) → Glue Crawler → Data Catalog → ETL → S3 (Parquet) → Athena → results (tables)
     - AWS Glue Data Catalog – automated dataset crawling for schema management  
     - Amazon Athena – serverless SQL queries directly on S3 data  
     **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)**
