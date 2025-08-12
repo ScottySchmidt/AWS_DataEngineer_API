@@ -1,0 +1,23 @@
+# S3 → SQS Notification Config (sanitized)
+----------------------------------------------
+
+{
+  "QueueConfigurations": [
+    {
+      "Id": "****************",
+      "QueueArn": "arn:aws:sqs:us-east-1:************:BlsPipelineStack-JsonWriteQueue****************",
+      "Events": ["s3:ObjectCreated:Put"],
+      "Filter": {
+        "Key": { "FilterRules": [ { "Name": "Suffix", "Value": ".json" } ] }
+      }
+    },
+    {
+      "Id": "****************",
+      "QueueArn": "arn:aws:sqs:us-east-1:************:BlsPipelineStack-JsonWriteQueue****************",
+      "Events": ["s3:ObjectCreated:Put"],
+      "Filter": {
+        "Key": { "FilterRules": [ { "Name": "Suffix", "Value": ".Current" } ] }
+      }
+    }
+  ]
+}
