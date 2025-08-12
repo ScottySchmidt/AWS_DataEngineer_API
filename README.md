@@ -29,7 +29,7 @@ Mirrors real-world flows for scalability and easy maintenance.
     EventBridge runs the ingest Lambda on a daily schedule.
     When a new file lands in S3, it sends a notification to SQS.
     The queue holds the event until the report Lambda picks it up and processes it.
-   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/iac-cloudshell-cdk-part4.ipynb)**
+   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/tree/main/docs/part4)**
 
 ---
 ## AWS Tech Stack  
