@@ -4,9 +4,7 @@ Uses S3, Lambda, SQS, EventBridge, Glue, Athena and CDK.  Deployed from AWS Clou
 Mirrors real-world flows for scalability and easy maintenance.
 
 1. **API Data from BLS → AWS S3**  
-   Fetches BLS productivity and inflation data using my registered public API and bulk files (with a compliant custom User-Agent).  
-   Compares file hashes to skip unchanged files, and stores results in Amazon S3.  
-   **[View Notebook](s3-pipeline-bls-api-part1.ipynb)**
+   Fetches BLS productivity and inflation data using my registered public API and bulk files (with a compliant custom User-Agent).  Compares file hashes to skip unchanged files, and stores results in Amazon S3.   **[View Notebook](s3-pipeline-bls-api-part1.ipynb)**
 
 2. **API Request via AWS Lambda → S3**  
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
@@ -22,7 +20,7 @@ Mirrors real-world flows for scalability and easy maintenance.
    Loads data from **S3** into a **Pandas notebook** (Kagglfe) where it’s cleaned, merged, and transformed before producing summary reports.   Work is in progress to add **Amazon Athena** so the same datasets can be queried directly with SQL for faster, serverless analysis.  
    **[View Notebook](aws-data-pipeline-warehouse-part3.ipynb)**
 
- 4. **Automated Data Pipeline (Infrastructure as Code)**  
+ 4. **Automated Data Pipeline - Infrastructure as Code**  
     Deploy the pipeline with AWS CDK (Python) from CloudShell. No local setup is needed.
     One Lambda pulls data from BLS and DataUSA, and another joins the datasets to create summary reports.
     An S3 bucket stores both raw data and the processed outputs.
@@ -32,7 +30,7 @@ Mirrors real-world flows for scalability and easy maintenance.
    **[View Logs Folder](https://github.com/ScottySchmidt/AWS_DataEngineer_API/tree/main/docs/part4)**
 
 ---
-## AWS Tech Stack  
+### AWS Tech Stack  
 - **Amazon S3** — buckets for both raw and processed BLS datasets  
 - **AWS Lambda** — pulls API data and drops it into S3  
 - **Amazon SQS** — queue for event-driven report processing (Part 4)  
