@@ -23,20 +23,26 @@ Mirrors data pipeline flows for scalability and easy maintenance.
    Work is in progress to add Amazon Athena so the same datasets can be queried directly with SQL for faster, serverless analysis.  
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb)**
 
- 4. **Infrastructure as Code — AWS CDK Deployment**
-   #### Method One: Full AWS pipeline using CDK in Python.
-     Runs directly from a Jupyter Notebook with minimal or no CloudShell usage.  
-     This approach is easier to iterate on, test, and document.  
-     **[View Notebook - In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/04-cdk-iac-python.ipynb)**
+4. **Infrastructure as Code — AWS CDK Deployment**
 
-   #### Method Two: Deploy with AWS CDK from CloudShell. 
-    No local setup is required.
-    - One Lambda pulls data from BLS and DataUSA, and another joins the datasets to create summary reports.
-    - An S3 bucket stores both raw data and the processed outputs.
-    - EventBridge runs the ingest Lambda on a daily schedule.
-    - When a new file lands in S3, it sends a notification to SQS.
-    - The queue holds the event until the report Lambda picks it up and processes it.
-   **[View Deployment Logs (sanitized)](https://github.com/ScottySchmidt/AWS_DataEngineer_API/tree/main/docs/part4)**
+#### Method One: Full AWS pipeline using CDK in Python
+Runs directly from a Jupyter Notebook with minimal or no CloudShell usage.  
+This approach is easier to iterate on, test, and document.  
+**[View Notebook – In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/04-cdk-iac-python.ipynb)**
+
+#### Method Two: Deploy with AWS CDK from CloudShell
+No local setup is required.  
+- One Lambda pulls data from BLS and DataUSA, and another joins the datasets to create summary reports.  
+- An S3 bucket stores both raw data and the processed outputs.  
+- EventBridge runs the ingest Lambda on a daily schedule.  
+- When a new file lands in S3, it sends a notification to SQS.  
+- The queue holds the event until the report Lambda picks it up and processes it.  
+
+**[View Deployment Logs (sanitized)](https://github.com/ScottySchmidt/AWS_DataEngineer_API/tree/main/docs/part4)**
+
+This shows all the AWS resources that were created automatically when I deployed Part 4 with AWS CDK:  
+<img width="600" height="400" alt="bls_pipeline_stack" src="https://github.com/user-attachments/assets/0540c36d-3b47-42f5-98ea-a2a08e2436ed" />
+
 
     This shows all the AWS resources that were created automatically when I deployed Part 4 with AWS CDK: 
     <img width="600" height="400" alt="bls_pipeline_stack" src="https://github.com/user-attachments/assets/0540c36d-3b47-42f5-98ea-a2a08e2436ed" />
