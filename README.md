@@ -19,8 +19,7 @@ Mirrors data pipeline flows for scalability and easy maintenance.
     **[View Notebook - In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)**
 
 3. **Data Processing and Analysis**  
-   Loads data from S3 into a Pandas notebook where it’s cleaned, merged, and transformed before producing summary reports.
-   Work is in progress to add Amazon Athena so the same datasets can be queried directly with SQL for faster, serverless analysis.  
+   Loads data from S3 into a Pandas notebook where it’s cleaned, merged, and transformed before producing summary reports. 
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb)**
 
 4. **Infrastructure as Code — AWS CDK Deployment**
