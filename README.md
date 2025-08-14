@@ -32,9 +32,9 @@ Part Four includes two deployment options:
    #### Method A: Full AWS pipeline using CDK in Python
    Runs directly from a Jupyter Notebook with minimal or no CloudShell usage.  
    This approach is easier to iterate on, test, and document.  
-   **[View Notebook – In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/04-cdk-iac-python.ipynb)**
+   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/04-cdk-iac-python.ipynb)**
    
-   #### Method B: Deploy with AWS CDK from CloudShell
+   #### Method B: Deploy with AWS CDK Python and CloudShell
    No local setup is required.  
    - One Lambda pulls data from BLS and DataUSA, and another joins the datasets to create summary reports.  
    - An S3 bucket stores both raw data and the processed outputs.  
