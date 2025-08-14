@@ -10,7 +10,7 @@ Mirrors data pipeline flows for scalability and easy maintenance.
 
 2. **API Request via AWS Lambda → S3**  
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
-   **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-lambda-api-s3.py)**
+   **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-api-lambda-s3.py)**
 
    #### Part2.5 Addition: Glue → Athena: Query S3 hosted Data 
      Flow: S3 (raw JSON) → Glue Crawler → Data Catalog → ETL → S3 (Parquet) → Athena → results (tables)
@@ -26,7 +26,7 @@ Mirrors data pipeline flows for scalability and easy maintenance.
    #### Method A: Python CDK (Local Jupyter Notebook):
    Runs directly from a Jupyter Notebook with minimal or no CloudShell usage.  
    This approach is easier to iterate on, test, and document.  
-   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/04-cdk-iac-python.ipynb)**
+   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/04-cdk-iac-python-local.ipynb)**
    
    #### Method B: CDK Python and AWS CloudShell
    No local setup is required.  
