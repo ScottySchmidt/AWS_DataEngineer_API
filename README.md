@@ -3,6 +3,13 @@ A four-stage pipeline on AWS — ingest → store → analyze → deploy-as-code
 Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena and CDK.  
 Mirrors data pipeline flows for scalability and easy maintenance.  
 
+### Pipeline Overview:
+- Lambda pulls data from BLS and DataUSA, and another joins the datasets to create summary reports.  
+- An S3 bucket stores both raw data and the processed outputs.  
+- EventBridge runs the ingest Lambda on a daily schedule.  
+- When a new file lands in S3, it sends a notification to SQS.  
+- The queue holds the event until the report Lambda picks it up and processes it. 
+
 ---
 
 **Status:** Adding GitHub Actions CI/CD *(third deployment method — in process)*  
@@ -17,37 +24,32 @@ Mirrors data pipeline flows for scalability and easy maintenance.
     Compares file hashes to skip unchanged files, and stores results in Amazon S3.
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)**
 
-3. **API Request via AWS Lambda → S3**  
+2. **API Request via AWS Lambda → S3**  
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-api-lambda-s3.py)**
 
-   #### Part2.5 Addition: Glue → Athena: Query S3 hosted Data 
+    **Part2.5 Addition: Glue → Athena: Query S3 hosted Data** 
      Flow: S3 (raw JSON) → Glue Crawler → Data Catalog → ETL → S3 (Parquet) → Athena → results (tables)
     - AWS Glue Data Catalog – automated dataset crawling for schema management  
     - Amazon Athena – serverless SQL queries directly on S3 data  
     **[View Notebook - In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)**
 
-4. **Data Processing and Analysis**  
+3. **Data Processing and Analysis**  
    Loads data from S3 into a Pandas notebook where it’s cleaned, merged, and transformed before producing summary reports. 
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb)**
 
-5. **Infrastructure as Code — AWS CDK Deployment**
+4. **Infrastructure as Code — AWS CDK Deployment**
    #### Method A: Python CDK (Local Jupyter Notebook):
    Runs directly from a Jupyter Notebook with minimal or no CloudShell usage.  
    This approach is easier to iterate on, test, and document.  
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/04-cdk-iac-python-local.ipynb)**
    
    #### Method B: CDK Python and AWS CloudShell
-   No local setup is required.  
-   - Lambda pulls data from BLS and DataUSA, and another joins the datasets to create summary reports.  
-   - An S3 bucket stores both raw data and the processed outputs.  
-   - EventBridge runs the ingest Lambda on a daily schedule.  
-   - When a new file lands in S3, it sends a notification to SQS.  
-   - The queue holds the event until the report Lambda picks it up and processes it.  
+   No local setup is required.   
    
    **[View Deployment Logs (sanitized)](https://github.com/ScottySchmidt/AWS_DataEngineer_API/tree/main/docs/part4)**
    
-   This shows all the AWS resources that were created automatically when I deployed Part 4 with AWS CDK:  
+   This shows all the AWS resources that were created automatically when I deployed Part 4 with AWS CDK Cloud Shell Version:  
    <img width="600" height="400" alt="bls_pipeline_stack" src="https://github.com/user-attachments/assets/0540c36d-3b47-42f5-98ea-a2a08e2436ed" />
 
 ---
