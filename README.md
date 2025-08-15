@@ -10,9 +10,7 @@ Mirrors data pipeline flows for scalability and easy maintenance.
 - When a new file lands in S3, it sends a notification to SQS.  
 - The queue holds the event until the report Lambda picks it up and processes it. 
 
----
-
-**Status:** Adding GitHub Actions CI/CD *(third deployment method — in process)*  
+Adding GitHub Actions CI/CD *(third deployment method — in process)*  
 [**View GitHub Actions Workflows**](https://github.com/ScottySchmidt/AWS_DataEngineer_API/tree/main/.github/workflows)  
 
 > **Goal:** Create an automated deployment method that’s easier to troubleshoot and maintain once fully configured.
