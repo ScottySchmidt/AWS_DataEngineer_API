@@ -1,22 +1,28 @@
-      name: "AWS Data Engineer CI/CD"
+ name: "AWS Data Engineer CI/CD"
 
 on:
   push:
     branches:
       - '**'  # change to 'main' later
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: 🚀 Confirm workflow triggered
-        run: echo "CI/CD workflow started for ${{ github.ref }}"
-
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Setup AWS CLI
+        uses: aws-actions/setup-aws-cli@v4
+
+      - name: 🚀 Confirm workflow triggered
+        run: echo "CI for ${{ github.repository }} on ${{ github.ref }}"
 
       - name: Show repo files
         run: |
@@ -25,9 +31,7 @@ jobs:
           echo "--- tests ---"
           ls -la tests || true
 
-      - name: Setup AWS CLI
-        uses: aws-actions/setup-aws-cli@v4
-
+      # 🔍 sanity: make sure secrets exist (prints names only)
       - name: Debug secrets (names only, no values)
         run: |
           for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_REGION BUCKET_NAME BLS_API_KEY; do
@@ -44,6 +48,7 @@ jobs:
           BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
           BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
 
+      # 🧪 check keys are valid
       - name: Test AWS credentials
         run: aws sts get-caller-identity
         env:
@@ -51,6 +56,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
 
+      # 🪣 confirm S3 bucket access
       - name: Check bucket access
         run: aws s3 ls s3://$BUCKET_NAME --region $AWS_REGION
         env:
@@ -59,6 +65,7 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
 
+      # configure session for later AWS SDK calls, if needed
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -83,9 +90,8 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
           BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
           BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
-          # RUN_AWS_SMOKE: "1"
+          # RUN_AWS_SMOKE: "1"  # enable later to hit AWS inside tests
         run: pytest tests/smoke_test.py -q
 
       - name: ✅ Done
         run: echo "All tests completed."
-
