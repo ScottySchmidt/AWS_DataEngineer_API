@@ -1,7 +1,16 @@
-name: sanity
-on: push
+name: "CI (baseline)"
+on: [push, workflow_dispatch]
 jobs:
-  noop:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "workflow parsed ✅"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11' }
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt || python -m pip install pytest boto3
+      - name: Run tests (no AWS)
+        run: pytest -q
+
