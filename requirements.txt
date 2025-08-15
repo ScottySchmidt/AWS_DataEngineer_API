@@ -1,4 +1,20 @@
-boto3
-awscli
-pandas
-requests
+# --- core (make CI green) ---
+pytest>=8.2,<9
+
+# --- runtime helpers ---
+requests>=2.32,<3
+python-dateutil>=2.9,<3
+
+# AWS SDK (handy locally/CI; Lambda runtime already has boto3)
+boto3>=1.34,<2
+
+# --- optional: AWS mocks for unit tests ---
+# moto[s3,sqs,lambda]>=5,<6
+
+# --- optional: data tooling ---
+# pandas>=2.2,<3
+# pyarrow>=16,<17   # or: fastparquet>=2024.5,<2025.0
+
+# --- optional: code quality (local/CI only) ---
+# black>=24.4,<25
+# ruff>=0.5,<1
