@@ -4,6 +4,7 @@ Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena and CDK.
 Mirrors data pipeline flows for scalability and easy maintenance. 
 
 **Status:** Adding GitHub Actions CI/CD (third deployment method — in process)
+
 [**View GitHub Actions Workflows**](https://github.com/ScottySchmidt/AWS_DataEngineer_API/tree/main/.github/workflows)
 Goal: Create an automated deployment method that’s easier to troubleshoot and maintain once fully configured.
 
