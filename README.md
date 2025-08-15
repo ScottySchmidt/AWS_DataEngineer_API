@@ -1,14 +1,18 @@
 # Four-Part AWS Data Engineering Pipeline
 A four-stage pipeline on AWS — ingest → store → analyze → deploy-as-code.  
 Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena and CDK. 
-Mirrors data pipeline flows for scalability and easy maintenance. **Status:** Adding GitHub Actions CI/CD (third deployment method — in process)
+Mirrors data pipeline flows for scalability and easy maintenance. 
+
+**Status:** Adding GitHub Actions CI/CD (third deployment method — in process)
+[**View GitHub Actions Workflows**](https://github.com/ScottySchmidt/AWS_DataEngineer_API/tree/main/.github/workflows)
+Goal: Create an automated deployment method that’s easier to troubleshoot and maintain once fully configured.
 
 1. **API Data from BLS → AWS S3**  
    Fetches BLS productivity and inflation data using my registered public API and bulk files (with a compliant custom User-Agent).
     Compares file hashes to skip unchanged files, and stores results in Amazon S3.
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)**
 
-2. **API Request via AWS Lambda → S3**  
+3. **API Request via AWS Lambda → S3**  
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-api-lambda-s3.py)**
 
@@ -18,11 +22,11 @@ Mirrors data pipeline flows for scalability and easy maintenance. **Status:** Ad
     - Amazon Athena – serverless SQL queries directly on S3 data  
     **[View Notebook - In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)**
 
-3. **Data Processing and Analysis**  
+4. **Data Processing and Analysis**  
    Loads data from S3 into a Pandas notebook where it’s cleaned, merged, and transformed before producing summary reports. 
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb)**
 
-4. **Infrastructure as Code — AWS CDK Deployment**
+5. **Infrastructure as Code — AWS CDK Deployment**
    #### Method A: Python CDK (Local Jupyter Notebook):
    Runs directly from a Jupyter Notebook with minimal or no CloudShell usage.  
    This approach is easier to iterate on, test, and document.  
