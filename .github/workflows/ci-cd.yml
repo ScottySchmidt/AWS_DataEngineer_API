@@ -1,0 +1,50 @@
+name: AWS Data Engineer CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout repository
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # 2. Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 3. Install dependencies
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 4. Set up AWS CLI & CDK
+      - name: Install AWS CLI & CDK
+        run: |
+          pip install awscli
+          npm install -g aws-cdk
+
+      # 5. Configure AWS credentials from GitHub Secrets
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1  # Change if your AWS region is different
+
+      # 6. CDK synth (checks CloudFormation template builds without deploying)
+      - name: CDK Synth
+        run: cdk synth
+
+      # 7. Run your smoke test script
+      - name: Run smoke tests
+        run: python tests/smoke_test.py
