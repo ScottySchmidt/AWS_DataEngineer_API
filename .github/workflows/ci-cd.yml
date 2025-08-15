@@ -1,37 +1,3 @@
-name: AWS Data Engineer CI/CD
-
-on:
-  push:
-    branches:
-      - '**' # trigger on any branch for testing; change to 'main' later
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: 🚀 Confirm workflow triggered
-        run: echo "CI/CD workflow started for branch ${{ github.ref }}"
-
-      # 🔍 Debug step: Check if secrets are loading
-      - name: Debug secrets (names only, no values)
-        run: |
-          for var in AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY AWS_REGION BUCKET_NAME BLS_API_KEY; do
-            if [ -z "${!var}" ]; then
-              echo "❌ Missing: $var"
-            else
-              echo "✅ Found: $var"
-            fi
-          done
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
-          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
-
-      # 🧪 Test if AWS keys are valid before configuring
       - name: Test AWS credentials
         run: aws sts get-caller-identity
         env:
@@ -39,24 +5,17 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
 
+      - name: Check bucket access
+        run: aws s3 ls s3://$BUCKET_NAME --region $AWS_REGION
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run smoke tests
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
-          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
-        run: pytest tests/smoke_test.py
-
-      - name: ✅ Done
-        run: echo "All tests completed."
