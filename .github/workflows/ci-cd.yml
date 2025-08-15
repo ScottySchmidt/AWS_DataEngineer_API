@@ -1,5 +1,6 @@
-name: sanity
-on: push
-jobs:
-  noop:
+name: CI/CD
+on:
+  push:
+    branches:
+      - main
 
