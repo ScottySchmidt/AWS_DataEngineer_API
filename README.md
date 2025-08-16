@@ -1,7 +1,6 @@
 # Four-Part AWS Data Engineering Pipeline
 A four-stage pipeline on AWS — ingest → store → analyze → deploy-as-code.  
-Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena and CDK.  
-Mirrors data pipeline flows for scalability and easy maintenance.  
+Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena and CDK. Mirrors data pipeline flows for scalability and easy maintenance.  
 
 ### Pipeline Overview:
 - Lambda pulls data from BLS and DataUSA, and another joins the datasets to create summary reports.  
@@ -64,6 +63,6 @@ Adding GitHub Actions CI/CD *(third deployment method — in process)*
 - **Amazon Athena** — run SQL queries directly on S3 data via the Glue catalog  
 
 ### Security, SDKs & Data Sources
-- **Secrets:** Kaggle Secrets; AWS Secrets Manager
+- **Secrets:** Github and Kaggle Secrets; AWS Secrets Manager
 - **SDKs:** Python, Pandas, Boto3 (AWS SDK for Python)
 - **Sources:** BLS Public API + bulk files; DataUSA API
