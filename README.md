@@ -3,11 +3,12 @@ A four-stage pipeline on AWS — ingest → store → analyze → deploy-as-code
 Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena and CDK. Mirrors data pipeline flows for scalability and easy maintenance.  
 
 ### Pipeline Overview:
-- Lambda pulls data from BLS and DataUSA, and another joins the datasets to create summary reports.  
-- An S3 bucket stores both raw data and the processed outputs.  
-- EventBridge runs the ingest Lambda on a daily schedule.  
+- One Lambda ingests data directly from the BLS and DataUSA APIs.  
+- An S3 bucket stores raw and processed outputs.  
+- Another Lambda joins the datasets, applies hashing for integrity/deduplication, and generates summary reports.  
+- EventBridge triggers the ingest Lambda on a daily schedule.  
 - When a new file lands in S3, it sends a notification to SQS.  
-- The queue holds the event until the report Lambda picks it up and processes it. 
+- The queue holds the event until the report Lambda processes it.  
 
 ---
 
