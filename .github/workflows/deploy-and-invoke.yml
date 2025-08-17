@@ -1,0 +1,27 @@
+name: deploy-and-invoke
+
+on:
+  push:
+    branches: [ main ]
+
+# ensures only the latest push to main runs; older ones get canceled
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: us-east-1
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      - name: Deploy Lambda
+        run: |
+          # your deploy commands here
+          echo "deploying…"
