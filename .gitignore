@@ -1,3 +1,6 @@
+# Ignore local environment files, build artifacts, and secrets  
+# Prevents exposing sensitive keys in commits  
+
 # Byte-compiled / cache
 __pycache__/
 *.py[cod]
