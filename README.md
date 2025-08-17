@@ -2,7 +2,7 @@
 A four-stage pipeline on AWS — ingest → store → analyze → deploy-as-code.  
 Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena and CDK. Mirrors data pipeline flows for scalability and easy maintenance.  
 
-### Pipeline Overview:
+## Pipeline Overview:
 - One Lambda ingests data directly from the BLS and DataUSA APIs.  
 - An S3 bucket stores raw and processed outputs.  
 - Another Lambda joins the datasets, applies hashing for integrity/deduplication, and generates summary reports.  
@@ -28,11 +28,12 @@ Adding GitHub Actions CI/CD *(third deployment method — in process)*
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-api-lambda-s3.py)**
 
-    **Part2.5 Addition: Glue → Athena: Query S3 hosted Data** 
-     Flow: S3 (raw JSON) → Glue Crawler → Data Catalog → ETL → S3 (Parquet) → Athena → results (tables)
-    - AWS Glue Data Catalog – automated dataset crawling for schema management  
-    - Amazon Athena – serverless SQL queries directly on S3 data  
-    **[View Notebook - In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)**
+#### 2.5 **Glue → Athena: Query S3-hosted Data**  
+**Flow:** S3 (raw JSON) → Glue Crawler → Data Catalog → ETL → S3 (Parquet) → Athena → results (tables)  
+
+- **AWS Glue Data Catalog** – automated dataset crawling for schema management  
+- **Amazon Athena** – serverless SQL queries directly on S3 data  
+ [View Notebook – In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)
 
 ## 3. **Data Processing and Analysis**  
    Loads data from S3 into a Pandas notebook where it’s cleaned, merged, and transformed before producing summary reports. 
