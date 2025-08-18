@@ -1,6 +1,11 @@
-# Four-Part AWS Data Engineering Pipeline
-A four-stage pipeline on AWS — ingest → store → analyze → deploy-as-code.  
-Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena and CDK. Mirrors data pipeline flows for scalability and easy maintenance.  
+# Four-Part AWS Data Engineering Pipeline  
+A four-stage pipeline on AWS — **ingest → store → analyze → deploy-as-code**.  
+Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena, and CDK. Mirrors real-world data pipeline flows for scalability and easy maintenance.  
+
+**Deployed three ways:**  
+1. **AWS CloudShell (Python CDK)**  
+2. **Local Jupyter Notebook (Python CDK)**  
+3. **GitHub Actions CI/CD (automated deploys)**
 
 ## Pipeline Overview:
 - One Lambda ingests data directly from the BLS and DataUSA APIs.  
