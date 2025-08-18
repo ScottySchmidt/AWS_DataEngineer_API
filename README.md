@@ -5,7 +5,7 @@ Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena, and CDK. Mirrors real-worl
 **Deployed three ways:**  
 1. **AWS CloudShell (Python CDK)**  
 2. **Local Jupyter Notebook (Python CDK)**  
-3. **GitHub Actions CI/CD (automated deploys)**
+3. **GitHub Actions CI/CD (automated deploys - in process)**
 
 ## Pipeline Overview:
 - One Lambda ingests data directly from the BLS and DataUSA APIs.  
@@ -25,9 +25,10 @@ Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena, and CDK. Mirrors real-worl
  
 ---
 
-## 1. **API Data from BLS → AWS S3**  
-   Fetches BLS productivity and inflation data using my registered public API and bulk files (with a compliant custom User-Agent).
-    Compares file hashes to skip unchanged files, and stores results in Amazon S3.
+## 1. API Data from BLS → AWS S3  
+Fetches productivity & inflation data via BLS API and bulk files.  
+- Uses compliant User-Agent & file hash checks to skip unchanged data  
+- Stores JSON results in Amazon S3  
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)**
 
 ## 2. **API Request via AWS Lambda → S3**  
