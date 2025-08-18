@@ -13,16 +13,12 @@ Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena and CDK. Mirrors data pipel
 ---
 
 ## CI/CD with GitHub Actions  
-**Goal:** Create an automated deployment method that’s easier to troubleshoot and maintain once fully configured.
+**Goal:** Automated deployments that are easier to maintain and debug.  
 
-**CI/CD path (no SQS):**  
-Git Push → GitHub Actions → Build & Test → Deploy to AWS  
+- **Deploy path:** Git push → Actions → Build/Test → AWS  
+- **Runtime path:** S3 → SQS → Lambda → Athena  
 
-**Runtime path (with SQS):**  
-S3 Event → SQS Queue → Lambda → Athena  
-
-*(Third deployment method — in process)*  
-[**View CI/CD Workflows**](https://github.com/ScottySchmidt/AWS_DataEngineer_API)  
+[**View CI/CD Workflows (third deployment method — in progress)**](https://github.com/ScottySchmidt/AWS_DataEngineer_API) 
 
 ---
 
