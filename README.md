@@ -29,7 +29,8 @@ C. **GitHub Actions CI/CD** *(automated deploys — in process)*
 Fetches productivity & inflation data via BLS API and bulk files.  
 - Uses compliant User-Agent & file hash checks to skip unchanged data  
 - Stores JSON results in Amazon S3  
-   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)**
+**[View Notebook – Ingest APIs to S3](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)**  
+**[View Notebook – Sync Version](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-api-sync.ipynb)**
 
 ## 2. **API Request via AWS Lambda → S3**  
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
