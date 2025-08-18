@@ -47,6 +47,14 @@ S3 Event → SQS Queue → Lambda → Athena
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb)**
 
 ## 4. **Infrastructure as Code — AWS CDK Deployment**
+The SQS queue is actively mapped to two Lambda functions:  
+- BlsReportFn (Cloud CDK version)  
+- RearcBLSLambda (Python CDK version)  
+
+Both event source mappings are Enabled, confirming that the event-driven pipeline is live: S3 → SQS → Lambda
+
+<img width="833" height="117" alt="lambda" src="https://github.com/user-attachments/assets/8e1d245a-f54b-4a60-bd92-769eb512a110" />
+
    #### Method A: Python CDK (Local Jupyter Notebook)
    Runs directly from a Jupyter Notebook with minimal or no CloudShell usage.  
    This approach is easier to iterate on, test, and document.  
