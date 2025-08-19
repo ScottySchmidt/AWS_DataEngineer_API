@@ -1,10 +1,10 @@
 # Four-Part AWS Data Engineering Pipeline  
 A four-stage pipeline on AWS — **ingest → store → analyze → deploy-as-code**.  
-Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena, and CDK. Mirrors real-world data pipeline flows for scalability and easy maintenance.  
+Uses S3, Lambda, SQS, EventBridge, IAM, and CDK (Python). Mirrors real-world data pipeline flows for scalability and easy maintenance.  
 
 ## Three Deployment Methods
-- **A.** AWS CloudShell (Python CDK)  
-- **B.** Local Jupyter Notebook (Python CDK)  
+- **A.** Local Jupyter Notebook (Python CDK)
+- **B.** AWS CloudShell (Python CDK)  
 - **C.** GitHub Actions CI/CD *(automated deploys — in process)*
 
 ## Pipeline Overview:
@@ -19,8 +19,7 @@ Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena, and CDK. Mirrors real-worl
 
 ## CI/CD with GitHub Actions  
 **Goal:** Deploy fast, debug faster.  
-- **Pipeline:** Git push → Actions → Build/Test → AWS  
-- **Runtime:** S3 → SQS → Lambda → Athena  
+- **Pipeline:** Git push → Actions → Build/Test → AWS   
 [**View CI/CD workflows (in progress)**](https://github.com/ScottySchmidt/AWS_DataEngineer_API)
  
 ---
@@ -28,9 +27,9 @@ Uses S3, Lambda, SQS, EventBridge, Glue, IAM, Athena, and CDK. Mirrors real-worl
 ## 1. API Data from BLS → AWS S3  
 Fetches productivity & inflation data via BLS API and bulk files.  
 - Uses compliant User-Agent & file hash checks to skip unchanged data  
-- Stores JSON results in Amazon S3  
-**[View Notebook – Ingest APIs to S3](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)**  
+- Stores JSON results in Amazon S3   
 **[View Notebook – Enhanced Sync Version](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-api-sync.ipynb)**
+**[View Notebook – Ingest APIs to S3](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)** 
 
 ## 2. **API Request via AWS Lambda → S3**  
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
