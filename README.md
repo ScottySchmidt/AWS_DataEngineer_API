@@ -33,7 +33,8 @@ Fetches productivity & inflation data via BLS API and bulk files.
 **[View Notebook – Ingest APIs to S3](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)** 
 
 ## 2. **API Request via AWS Lambda → S3**  
-   Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. Acts as a bridge between Part 1 and Part 3 data analysis.  
+   Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. 
+   Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-api-lambda-s3.py)**
 
 #### 2.5 **Glue → Athena: Query S3-hosted Data**  
