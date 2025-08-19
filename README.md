@@ -1,4 +1,4 @@
-# Four-Part AWS Data Engineering Pipeline  
+# # AWS Data Engineering Pipeline (Four-Part) 
 A four-stage pipeline on AWS — **ingest → store → analyze → deploy-as-code**.  
 Uses S3, Lambda, SQS, EventBridge, IAM, and CDK (Python). Mirrors real-world data pipeline flows for scalability and easy maintenance.  
 
@@ -38,9 +38,8 @@ Fetches productivity & inflation data via BLS API and bulk files.
 
 #### 2.5 **Glue → Athena: Query S3-hosted Data**  
 **Flow:** S3 (raw JSON) → Glue Crawler → Data Catalog → ETL → S3 (Parquet) → Athena → results (tables)  
-
-- **AWS Glue Data Catalog** – automated dataset crawling for schema management  
-- **Amazon Athena** – serverless SQL queries directly on S3 data  
+   AWS Glue Data Catalog: auto-detects schema and datasets  
+   Amazon Athena: run SQL queries directly on S3 data   
  [View Notebook – In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)
 
 ## 3. **Data Processing and Analysis**  
@@ -53,7 +52,6 @@ The SQS queue is actively mapped to two Lambda functions:
 - RearcBLSLambda (Python CDK version)  
 
 Both event source mappings are Enabled, confirming that the event-driven pipeline is live: S3 → SQS → Lambda
-
 <img width="833" height="117" alt="lambda" src="https://github.com/user-attachments/assets/8e1d245a-f54b-4a60-bd92-769eb512a110" />
 
    #### Method A: Python CDK (Local Jupyter Notebook)
@@ -65,7 +63,7 @@ Both event source mappings are Enabled, confirming that the event-driven pipelin
    No local setup is required.  
    **[View Deployment Logs (sanitized)](https://github.com/ScottySchmidt/AWS_DataEngineer_API/tree/main/docs/part4)**
    
-   This shows all the AWS resources that were created automatically when I deployed Part 4 with AWS CDK Cloud Shell Version:  
+   CloudFormation stack below proves a fully deployed AWS data pipeline:  
    <img width="600" height="400" alt="bls_pipeline_stack" src="https://github.com/user-attachments/assets/0540c36d-3b47-42f5-98ea-a2a08e2436ed" />
 
 ---
