@@ -18,10 +18,11 @@ Uses S3, Lambda, SQS, EventBridge, IAM, and CDK (Python). Mirrors real-world dat
 ---
 
 ## CI/CD with GitHub Actions  
-**Goal:** Deploy fast, debug faster.  
+**Goal:** Deploy fast and debug faster.  
 - **Pipeline:** Git push → Actions → Build/Test → AWS   
 [**View CI/CD workflows (in progress)**](https://github.com/ScottySchmidt/AWS_DataEngineer_API)
- 
+<img width="337" height="70" alt="image" src="https://github.com/user-attachments/assets/fd656576-0b56-490c-b159-1caab543429e" />
+
 ---
 
 ## 1. API Data from BLS → AWS S3  
