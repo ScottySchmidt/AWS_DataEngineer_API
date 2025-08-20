@@ -38,15 +38,9 @@ Uses API to fetch productivity & inflation data and bulk files.
    Acts as a bridge between Part 1 and Part 3 data analysis.  
    **[View Script](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-api-lambda-s3.py)**
 
-#### 2.5 **Glue → Athena: Query S3-hosted Data**  
-**Flow:** S3 (raw JSON) → Glue Crawler → Data Catalog → ETL → S3 (Parquet) → Athena → results (tables)  
-   AWS Glue Data Catalog: auto-detects schema and datasets  
-   Amazon Athena: run SQL queries directly on S3 data   
- [View Notebook – In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/02-glue-athena-extension.ipynb)
-
 ## 3. **Data Processing and Analysis**  
    Loads data from S3 into a Pandas notebook where it’s cleaned, merged, and transformed before producing summary reports. 
-   **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb)**
+   **[View Notebook - Enhanced SYNC Version in Process]([https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-analytics-sync-reports.ipynb))**
 
 ## 4. **Infrastructure as Code — AWS CDK Deployment**
 Automate the above steps. The SQS queue is actively mapped to two Lambda functions:  
