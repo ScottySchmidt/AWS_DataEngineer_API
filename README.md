@@ -40,6 +40,7 @@ Uses API to fetch productivity & inflation data and bulk files.
 
 ## 3. **Data Processing and Analysis**  
    Loads data from S3 into a Pandas notebook where it’s cleaned, merged, and transformed before producing summary reports. 
+   
    **[Enhanced Sync Version - In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-analytics-sync-reports.ipynb)**
 
 ## 4. **Infrastructure as Code — AWS CDK Deployment**
