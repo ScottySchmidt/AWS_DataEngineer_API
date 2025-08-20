@@ -49,7 +49,7 @@ Uses API to fetch productivity & inflation data and bulk files.
    **[View Notebook](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb)**
 
 ## 4. **Infrastructure as Code — AWS CDK Deployment**
-The SQS queue is actively mapped to two Lambda functions:  
+Automate the above steps. The SQS queue is actively mapped to two Lambda functions:  
 - BlsReportFn (Cloud CDK version)  
 - RearcBLSLambda (Python CDK version)  
 
