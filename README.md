@@ -26,11 +26,12 @@ Uses S3, Lambda, SQS, EventBridge, IAM, and CDK (Python). Mirrors real-world dat
 ---
 
 ## 1. API Data from BLS → AWS S3  
-Fetches productivity & inflation data via BLS API and bulk files.  
+Uses API to fetch productivity & inflation data and bulk files.  
 - Uses compliant User-Agent & file hash checks to skip unchanged data  
-- Stores JSON results in Amazon S3   
-**[View Notebook – Enhanced Sync Version](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-api-sync.ipynb)**
-**[View Notebook – Ingest APIs to S3](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)** 
+- Stores JSON results in Amazon S3
+- Enhanced Sync version keeps S3 updated—adds, updates, and deletes automatically
+- **[View Notebook – Enhanced Sync Version](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-api-sync.ipynb)**
+- **[View Notebook – Ingest APIs to S3](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)**  
 
 ## 2. **API Request via AWS Lambda → S3**  
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. 
