@@ -30,6 +30,7 @@ Uses API to fetch productivity & inflation data and bulk files.
 - Uses compliant User-Agent & file hash checks to skip unchanged data  
 - Stores JSON results in Amazon S3
 - Enhanced Sync version keeps S3 updated—adds, updates, and deletes automatically
+- 
 - **[View Notebook – Enhanced Sync Version](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-api-sync.ipynb)**
 
 ## 2. **API Request via AWS Lambda → S3**  
