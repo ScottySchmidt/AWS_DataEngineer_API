@@ -31,7 +31,6 @@ Uses API to fetch productivity & inflation data and bulk files.
 - Stores JSON results in Amazon S3
 - Enhanced Sync version keeps S3 updated—adds, updates, and deletes automatically
 - **[View Notebook – Enhanced Sync Version](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-api-sync.ipynb)**
-- **[View Notebook – Ingest APIs to S3](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-apis-to-s3.ipynb)**  
 
 ## 2. **API Request via AWS Lambda → S3**  
    Automates pulling API data from BLS and dropping JSON into S3 on a monthly schedule using AWS Lambda Amazon EventBridge. 
@@ -40,7 +39,7 @@ Uses API to fetch productivity & inflation data and bulk files.
 
 ## 3. **Data Processing and Analysis**  
    Loads data from S3 into a Pandas notebook where it’s cleaned, merged, and transformed before producing summary reports. 
-   **[View Notebook - Enhanced SYNC Version in Process]([https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-data-analytics-reports.ipynb](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-analytics-sync-reports.ipynb))**
+   **[Enhanced Sync Version - In Process](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/03-analytics-sync-reports.ipynb)**
 
 ## 4. **Infrastructure as Code — AWS CDK Deployment**
 Automate the above steps. The SQS queue is actively mapped to two Lambda functions:  
