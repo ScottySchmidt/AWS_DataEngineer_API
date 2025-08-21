@@ -3,9 +3,9 @@ A four-stage pipeline on AWS — **ingest → store → analyze → deploy-as-co
 Uses S3, Lambda, SQS, EventBridge, IAM, and CDK (Python). Mirrors real-world data pipeline flows for scalability and easy maintenance.  
 
 ## Three Deployment Methods
-- **A.** Local Jupyter Notebook (Python CDK)
-- **B.** AWS CloudShell (Python CDK)  
-- **C.** GitHub Actions CI/CD *(automated deploys — in process)*
+- A. Local Jupyter Notebook (Python CDK)
+- B. AWS CloudShell (Python CDK)  
+- C. GitHub Actions CI/CD *(automated deploys — in process)*
 
 ## Pipeline Overview:
 - One Lambda ingests data directly from the BLS and DataUSA APIs.  
@@ -30,7 +30,6 @@ Uses API to fetch productivity & inflation data and bulk files.
 - Uses compliant User-Agent & file hash checks to skip unchanged data  
 - Stores JSON results in Amazon S3
 - Enhanced Sync version keeps S3 updated—adds, updates, and deletes automatically
-- 
 - **[View Notebook – Enhanced Sync Version](https://github.com/ScottySchmidt/AWS_DataEngineer_API/blob/main/01-ingest-api-sync.ipynb)**
 
 ## 2. **API Request via AWS Lambda → S3**  
@@ -45,9 +44,6 @@ Uses API to fetch productivity & inflation data and bulk files.
 
 ## 4. **Infrastructure as Code — AWS CDK Deployment**
 Automate the above steps. The SQS queue is actively mapped to two Lambda functions:  
-- BlsReportFn (Cloud CDK version)  
-- RearcBLSLambda (Python CDK version)  
-
 Both event source mappings are Enabled, confirming that the event-driven pipeline is live: S3 → SQS → Lambda
 <img width="833" height="117" alt="lambda" src="https://github.com/user-attachments/assets/8e1d245a-f54b-4a60-bd92-769eb512a110" />
 
